@@ -1,10 +1,17 @@
 go_binary(
-    name='cgo-buck-example',
-    srcs=['main.go'],
-    cgo_deps=[':call_from_go'],
+    name="cgo-buck-example",
+    cgo_deps=[":call_from_go"],
+    srcs=["main.go"]
 )
 
 cgo_library(
-    name='call_from_go',
-    srcs=['call_from_go.c']
+    name="call_from_go",
+    headers=["call_from_go.h"],
+    srcs=["cgo_source.go"],
+    deps=[":c_lib"]
+)
+
+cxx_library(
+    name="c_lib",
+    srcs=["call_from_go.c"]
 )
