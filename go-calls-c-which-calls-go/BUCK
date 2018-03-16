@@ -1,0 +1,11 @@
+go_binary(
+    name='cgo-buck-example',
+    srcs=['main.go'],
+    cgo_deps=[':call_go'],
+)
+
+cgo_library(
+    name='call_go',
+    srcs=['export-to-c.go',
+        'call_go.c']
+)
