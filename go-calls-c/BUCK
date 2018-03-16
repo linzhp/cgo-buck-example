@@ -6,6 +6,7 @@ go_binary(
 
 cgo_library(
     name="call_from_go",
+    package_name="main",
     headers=["call_from_go.h"],
     srcs=["cgo_source.go"],
     deps=[":c_lib"]
@@ -13,5 +14,6 @@ cgo_library(
 
 cxx_library(
     name="c_lib",
-    srcs=["call_from_go.c"]
+    srcs=["call_from_go.c"],
+    headers=["call_from_go.h"]
 )
